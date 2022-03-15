@@ -12,6 +12,12 @@ class EditController extends Controller
     public function __invoke(Product $product)
     {
         $categories = ProductCategory::all();
+
+        if ($product->user_id != \Auth::id()) {
+            return redirect(\URL::previous());
+        }
+
+
         return view('shop.mycard.edit', compact('product', 'categories'));
     }
 }

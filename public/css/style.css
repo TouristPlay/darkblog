@@ -251,7 +251,7 @@ a.disable {
     text-align: center;
 }
 .profile__title, .blog__title, .forum__title, .shop__title {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin-bottom: 20px;
     color: #2b91af;
     display: flex;
@@ -586,10 +586,6 @@ a.disable {
     margin-bottom: 30px;
 }
 
-
-
-
-
 .note-icon-bar {
     border-top: 1px solid #fff;
 }
@@ -842,6 +838,7 @@ a.post-btn {
 
 .topic__item-text {
     font-size: 0.925rem;
+    overflow-wrap: break-word;
 }
 
 .message_count {
@@ -1405,6 +1402,9 @@ a.post-btn {
     position: static;
 }
 
+.blog__item-text {
+    overflow-wrap: break-word;
+}
 
 .look-internet__link {
     font-size: 0.625rem;
@@ -1578,6 +1578,10 @@ a.post-btn {
 
     .footer {
         display: block;
+    }
+
+    .show__item {
+        margin-left: 0;
     }
 
     .header__nav {
@@ -1900,6 +1904,10 @@ a.post-btn {
         margin-bottom: 0;
     }
 
+    .card__form {
+        width: 80px;
+    }
+
     .product__inner {
         display: block;
     }
@@ -1948,7 +1956,7 @@ a.post-btn {
 
 
     .forum .post-btn {
-        margin-top: 140px;
+        margin-top: 170px;
         margin-bottom: 10px;
     }
 

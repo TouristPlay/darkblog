@@ -14,6 +14,10 @@ class UpdateController extends Controller
     public function __invoke(Product $product, ProductRequest $productRequest)
     {
 
+        if ($product->user_id != \Auth::id()) {
+            return redirect(\URL::previous());
+        }
+
         // Меняем количество продуктов в категории
         ProductCategory::whereId($product->category_id)->first()->decrement('product_counter');
 
