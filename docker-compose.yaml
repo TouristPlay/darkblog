@@ -1,0 +1,49 @@
+version: '3.7'
+services:
+  nginx:
+    image: nginx:latest
+    volumes:
+      -   ./.docker/nginx/conf.d/:/etc/nginx/conf.d
+      -   ./:/var/www/
+    ports:
+      - "80:80"
+    container_name: "${PROJECT_NAME}_nginx"
+    depends_on:
+      - app
+    
+  app:
+    build:
+      context: .
+      dockerfile: .docker/app/Dockerfile
+    volumes:
+      - ./:/var/www
+    container_name: "${PROJECT_NAME}_app"
+    depends_on:
+      - db
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: "${PROJECT_NAME}_phpmyadmin"
+    restart: always
+    ports:
+      - "8888:80"
+    environment:
+      - PMA_ARBITRARY=1
+
+  db:
+    image: mysql:8.0
+    container_name: "${PROJECT_NAME}_db"
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - "3306:3306"
+    volumes:
+      - db:/var/lib/mysql/
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+
+volumes:
+  db:
+    name: ${PROJECT_NAME}_db

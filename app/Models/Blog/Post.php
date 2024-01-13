@@ -20,10 +20,4 @@ class Post extends Model
         'published',
         'favorite'
     ];
-
-//    public function users()
-//    {
-//        return $this->belongsToMany(User::class);
-//    }
-
 }

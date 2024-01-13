@@ -13,7 +13,4 @@ class FavoritePost extends Model
         'post_id',
         'user_id'
     ];
-
-
-
 }
