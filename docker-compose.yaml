@@ -33,7 +33,6 @@ services:
   db:
     image: mysql:8.0
     container_name: "${PROJECT_NAME}_db"
-    command: --default-authentication-plugin=mysql_native_password
     restart: always
     ports:
       - "3306:3306"
